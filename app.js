@@ -5,11 +5,22 @@ const logger = require('morgan')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const pug = require ('pug')
+const session = require ('express-session')
 
+const db = require(__dirname + '/modules/database')
 const index = require('./routes/index')
-const users = require('./routes/users')
+const register = require('./routes/register')
+const login = require('./routes/log-in')
 
 const app = express()
+
+// Activate the session app wide
+app.use(session({
+  secret: 'super secure',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false }
+}))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -23,7 +34,8 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', index)
-app.use('/users', users)
+app.use('/', register)
+app.use('/', login)
 
 // catch 404 and forward to error handler
 app.use( (req, res, next) => {
