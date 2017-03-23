@@ -18,20 +18,23 @@ const User = db.define( 'user', {
 } )
 
 // GPS routes
-// const Route = db.define( 'route', {
-// 	location: sequelize.STRING,
-// 	level: sequelize.STRING,
-//   length: sequelize.INT
-// } )
+const Route = db.define( 'route', {
+	location: sequelize.STRING,
+  lat: sequelize.STRING,
+  lng: sequelize.STRING,
+	level: sequelize.STRING,
+  length: sequelize.STRING,
+  upload: sequelize.STRING
+} )
 
 // setting db relations
 
-// Route.belongsTo( User )
-// User.hasMany( Route )
+Route.belongsTo( User )
+User.hasMany( Route )
 
 // creating database with one test user
 db
-  .sync({ force: true })
+  .sync({ force: false })
   .then( (err) => {
     console.log('It worked!')
     bcrypt.hash("password", null, null, (err, hash) => {
@@ -49,6 +52,6 @@ db
 // exporting database as a module
 module.exports = {
   conn: db,
-  User:User
-  // Route:Route
+  User:User,
+  Route:Route
 }

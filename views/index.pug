@@ -2,4 +2,29 @@ extends application.pug
 
 block content
   h1= title
-  p Welcome to #{title}
+  
+  if user
+    form(id="upload" enctype="multipart/form-data" action="/upload" method="post")
+      h2 Upload gps file
+      div(class="file-field input-field")
+        div(class="btn")
+          label(for="Location") Location
+          input(placeholder="Route location" name="location" id="location" type="location" class="validate")
+          label(for="level") Level
+          input(placeholder="Level" name="level" id="level" type="text" class="validate")
+          label(for="length") Length
+          input(placeholder="Route length" name="length" id="length" type="length" class="validate")
+          label(for="file") GPX File
+          input(type='file' name="upload")
+          button(type="submit" name="action") Submit
+              
+    h2 Search routes
+    .div.searchbar.input-field.light
+      form#searchLocation(action="/search" method="post")
+        input(placeholder="Enter your location to find routes!" name="search" id="search" type="search" required)
+        button(type="submit" name="action") Submit
+        #notfound 
+          p= message
+        
+  #map-canvas(style="height: 650px;")
+  

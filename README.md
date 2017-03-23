@@ -87,3 +87,12 @@ o	Optional: display the whole routes on the map
 •	Rate GPS routes
 •	Make a blog page
 •	AJAX
+
+# Notes
+
+Store coordinates of GPS files in a json files
+Search on location though this json file
+Render locations on a map using this json file
+Do not query directly from database
+
+Download function - rename downloaded files

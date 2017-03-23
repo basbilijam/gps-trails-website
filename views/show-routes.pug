@@ -1,0 +1,24 @@
+extends application.pug
+
+block content 
+    
+  #control
+    h2 Find Local GPS Routes
+    p
+      | We'll help you locate the best routes. Simply choose an option below to begin...
+    form#chooseLocation(method='get')
+      button.learnButton(type='submit') Use current location
+      |  
+      button#searchLocation.learnButton(type='button') Search by location
+      .clear
+      .locationSearch
+        input#textLocation(type='text', name='location', placeholder='enter your location', autofocus='')
+        |  
+        button.learnButton(type='submit') Search
+      .clear
+    
+  #map-canvas(style="height: 650px;")
+  
+  each searchMatch in results
+    ul
+      li Location is: #{searchMatch.location}

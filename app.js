@@ -1,3 +1,4 @@
+// requiring dependencies
 const express = require('express')
 const path = require('path')
 const favicon = require('serve-favicon')
@@ -6,12 +7,18 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const pug = require ('pug')
 const session = require ('express-session')
+const bcrypt = require('bcrypt-nodejs')
 
+// requiring custom modules and routes
 const db = require(__dirname + '/modules/database')
+const search = require(__dirname +'/modules/search')
 const index = require('./routes/index')
 const register = require('./routes/register')
-const login = require('./routes/log-in')
+const authentication = require('./routes/authentication')
+const upload = require('./routes/upload')
+const showRoutes = require('./routes/show-routes')
 
+// setting the app to express
 const app = express()
 
 // Activate the session app wide
@@ -33,9 +40,13 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
+// use routes
 app.use('/', index)
 app.use('/', register)
-app.use('/', login)
+app.use('/', authentication)
+app.use('/', upload)
+app.use('/', showRoutes)
+app.use('/', search)
 
 // catch 404 and forward to error handler
 app.use( (req, res, next) => {
@@ -56,7 +67,7 @@ app.use( (err, req, res, next) => {
 });
 
 app.listen(3000, (req, res) => {
-  console.log('Server running on port 3000')
+  console.log('Booya, motherflippin server running on port 3000!')
 })
 
 module.exports = app

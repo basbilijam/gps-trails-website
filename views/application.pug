@@ -1,8 +1,26 @@
 doctype html
 html
   head
-    title= title
+    title Findtrails: GPS routes sharing platform
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    ul
+      li
+        a(href='/') Home
+      if user
+        li
+          a(href='logout') Logout
+      else 
+        li
+          a(href='register') Register
+        li
+          a(href='log-in') Login
+    
+    script(src="https://code.jquery.com/jquery-2.1.1.min.js")
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js')
+    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBdVgxHDOdfpMCYuDeqIg6RCi4zF3w20Lk')
+    script(src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js")
+    script(language="javascript" type="text/javascript" src="./javascripts/map.js")
     
     block content
