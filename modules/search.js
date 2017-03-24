@@ -47,16 +47,13 @@ const search = router.post('/search', (req, res) => {
         if (
           ( (searchQuery.lat + 3) > result[i].lat && (searchQuery.lat - 3) < result[i].lat ) &&
           ( (searchQuery.lng + 3) > result[i].lng && (searchQuery.lng - 3) < result[i].lng )
-        ) searchMatch.push(  result[i] )
-      }
-
+          )  searchMatch.push(  result[i] )
+        }
       console.log('Matches are ', searchMatch)
-
-    res.send({results: searchMatch})
+      // send the data to the frontend!
+      res.send( searchMatch )
     }).catch( err => {
       console.log(err);
-      // working on error message to send to frontend: here or in if / else statement?
-      res.send({message: "No matches!"})
     })
   })
 })

@@ -27,6 +27,7 @@ $(document).ready(function() {
 
   //End Geo location
 
+  // set options and styles for map
   var mapOptions = {
     zoom: 9,
     styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"landscape","elementType":"geometry.fill","stylers":[{"saturation":"50"},{"color":"#c5c16d"},{"lightness":"65"},{"gamma":"1.87"}]},{"featureType":"landscape.natural","elementType":"labels.text.fill","stylers":[{"saturation":"15"}]},{"featureType":"landscape.natural.landcover","elementType":"geometry.fill","stylers":[{"saturation":"50"},{"visibility":"on"},{"color":"#c5c16d"}]},{"featureType":"landscape.natural.landcover","elementType":"geometry.stroke","stylers":[{"hue":"#ffcb00"}]},{"featureType":"landscape.natural.terrain","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#aba867"},{"saturation":"-56"},{"lightness":"42"},{"gamma":"1.48"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#aba867"},{"visibility":"on"},{"weight":"0.20"}]},{"featureType":"road.highway","elementType":"labels","stylers":[{"visibility":"on"},{"saturation":"2"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road.local","elementType":"geometry.stroke","stylers":[{"saturation":"2"},{"visibility":"on"},{"color":"#777777"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#c2c3a5"},{"visibility":"on"}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#a2def8"}]},{"featureType":"water","elementType":"labels.text","stylers":[{"visibility":"on"},{"color":"#555454"},{"weight":"0.01"}]}],
@@ -44,8 +45,6 @@ $(document).ready(function() {
 
   };
 
-  // var infoContent = null,
-
   //Adding infowindow option
   var infowindow = new google.maps.InfoWindow();
 
@@ -53,7 +52,7 @@ $(document).ready(function() {
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
   // Place marker
-  const allMarkers = [];
+  let allMarkers = [];
   function placeMarker (placelat, placelng, whichmap, infoWindowContent) {
     var marker = new google.maps.Marker({
         position: {
@@ -69,25 +68,50 @@ $(document).ready(function() {
       return marker
     }
 
+  // function to clear all markers again
+  function deleteMarkers() {
+        // clearMarkers();
+        for (var i = 0; i < allMarkers.length; i++) {
+          allMarkers[i].setMap(null)
+        }
+        allMarkers = []
+      }
+
   $('#searchLocation').submit(function(event) { // bind function to submit event of form
-    //  console.log("Event target is: ", event.target)
-    //  console.log('Searchlocation is: ', searchLocation)
+
+    // delete possible markers from previous query
+    deleteMarkers()
+
+    // delete possible text from previous unsuccessfull query
+    $( '#notfound' ).empty();
+
+    // prevent default post of searchresult to make AJAX possible
     event.preventDefault()
+
     $.post( "/search", { search: $('#search').val() }, function( data ) {
       console.log(data)
-      console.log(data.results[0])
-        for (var i = 0; i < data.results.length; i++) {
-          var newMarker = placeMarker( Number(data.results[i].lat), Number(data.results[i].lng), map,
-          "<div id='infowindow'><h4>Starting point: "+ data.results[i].location +"<h4></div>"
-          +"<h4>Level: "+data.results[i].level+"<h4>"+"<h4>Length: "+data.results.length+"<h4>")
+
+      // if there are gpx routes within the area of search, use data from backend to place markers on map
+      if (data.length > 0) {
+        for (var i = 0; i < data.length; i++) {
+
+          // placing markers and setting content for infowindow
+          var newMarker = placeMarker( Number(data[i].lat), Number(data[i].lng), map,
+          "<div id='infowindow'><h4>Starting point: "+ data[i].location +"<h4></div>"
+          +"<h4>Level: "+data[i].level+"<h4>"+"<h4>Length: "+data[i].length+"<h4>"+
+          "<a href='/public/uploads/"+data[i].location+"'>Download file</a>")
+
+          // fill temp array with markers from search query
           allMarkers.push(newMarker)
-          map.setCenter(new google.maps.LatLng(data.results[i].lat,data.results[i].lng));
+
+          // centre map to location of searchquery
+          map.setCenter(new google.maps.LatLng(data[i].lat,data[i].lng));
         }
-      },
-      // working on error message when there are no matches
-      function (err) {
-        $('#notfound').append(err)
-      })
+      } else {
+        // if there are no gpx routes nearby, send message
+        $('#notfound').append("<p>No results found at that location!</p>")
+      }
+    })
   });
 
   return false; // important: prevent the form from submitting
