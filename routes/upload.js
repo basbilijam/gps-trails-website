@@ -43,8 +43,14 @@ var publicConfig = {
   stagger_time:       1000, // for elevationPath
   encode_polylines:   false,
   secure:             true // use https
-
 };
+
+// set up route to upload page
+router.get('/upload', (req, res, next) => {
+  res.render('upload-file', {user: req.session.user})
+})
+
+module.exports = router
 
 // post form for uploading new GPS files
 router.post('/upload', upload.single('upload'), (req, res) => {
@@ -55,9 +61,11 @@ router.post('/upload', upload.single('upload'), (req, res) => {
 	}
   const gmAPI = new GoogleMapsAPI(publicConfig);
   const newRoute = {
+    name: req.body.name,
     location: req.body.location,
     level: req.body.level,
     length: req.body.length,
+    description: req.body.description,
     upload: req.file.filename,
     userId: req.session.user.id
   }
@@ -68,7 +76,7 @@ router.post('/upload', upload.single('upload'), (req, res) => {
   	db.Route.create(newRoute).then( () => {
       console.log(newRoute)
     })
-  res.render('index', { title: 'Thanks for uploading your GPS route!',  user: req.session.user })
+  // res.render('index', { title: 'Thanks for uploading your GPS route!',  user: req.session.user })
   })
 })
 

@@ -19,11 +19,13 @@ const User = db.define( 'user', {
 
 // GPS routes
 const Route = db.define( 'route', {
+  name: sequelize.STRING,
 	location: sequelize.STRING,
   lat: sequelize.STRING,
   lng: sequelize.STRING,
 	level: sequelize.STRING,
   length: sequelize.STRING,
+  description: sequelize.TEXT,
   upload: sequelize.STRING
 } )
 

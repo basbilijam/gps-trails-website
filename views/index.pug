@@ -1,29 +1,30 @@
 extends application.pug
 
 block content
-  h1= title
   
-  if user
-    form(id="upload" enctype="multipart/form-data" action="/upload" method="post")
-      h2 Upload gps file
-      div(class="file-field input-field")
-        div(class="btn")
-          label(for="Location") Location
-          input(placeholder="Route location" name="location" id="location" type="location" class="validate")
-          label(for="level") Level
-          input(placeholder="Level" name="level" id="level" type="text" class="validate")
-          label(for="length") Length
-          input(placeholder="Route length" name="length" id="length" type="length" class="validate")
-          label(for="file") GPX File
-          input(type='file' name="upload")
-          button(type="submit" name="action") Submit
-              
-    h2 Search routes
-    .div.searchbar.input-field.light
-      form#searchLocation(action="/search" method="post")
-        input(placeholder="Enter your location to find routes!" name="search" id="search" type="search" required)
-        button(type="submit" name="action") Submit
+  div(class="container-fluid")
+    div(class="row")
+      div(class="jumbotron")
+        div(class="container")
+          h1 FindTrails
+          p Share and find GPX files for the best trailruns and hikes!
+          p
+            a(class="btn btn-primary btn-lg" href="#" role="button") Learn more
+                  
+        form#searchLocation(action="/search" method="post")
+          div(id="custom-search-input")
+            div(class="input-group col-md-12")
+              input(class="form-control input-lg" placeholder="Enter location to find gpx files" name="search" id="search" type="search" required)
+              span(class="input-group-btn")
+                button(type="submit" class="btn btn-info btn-lg" name="action")
+                  i(class="glyphicon glyphicon-search")
         #notfound 
-          
-  #map-canvas(style="height: 650px;")
+    
+    div(class="container" id="intro")
+        h2 Share and find the best runs or hikes
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    
+    if user      
+      div(class="container")        
+        #map-canvas(style="height: 650px;")
   

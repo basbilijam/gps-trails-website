@@ -9,13 +9,13 @@ const db = require('../modules/database')
 
 // setting up route to login
 router.get('/log-in', (req, res) => {
-  // if (req.session.user) {
-  //   res.render('index', {
-  //     user: req.session.user
-  //   })
-  // } else {
+  if (req.session.user) {
+    res.render('index', {
+      user: req.session.user
+    })
+  } else {
     res.render('log-in');
-  // }
+  }
 })
 
 // login function and rendering dashboard when logged in

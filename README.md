@@ -88,20 +88,14 @@ o	Optional: display the whole routes on the map
 •	Make a blog page
 •	AJAX
 
-# Notes
+# Still working on:
 
-Store coordinates of GPS files in a json files
-Search on location though this json file
-Render locations on a map using this json file
-Do not query directly from database
-
+- Download/upload:
 Download function - rename downloaded files
-FMC format? Render the routes on the map?
+Upload also files in FMC format? Render the routes on the map?
 Return them again in GPX?
 
-AJAX:
-- error message if there are no routes found in backend (node) or in AJAX?
+- Authentication:
+Wrong password AJAX/jQuery message
 
-Center map on user's location when openeing website?
-
-Delete markers when there is a new query
+- Center map on user's location when visiting website?

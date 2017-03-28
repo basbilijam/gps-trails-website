@@ -1,0 +1,60 @@
+extends application.pug
+
+block content
+  
+
+  div(class="container-fluid")
+    div(class="row")
+      div(class="col-md-5")
+        div(class="form-area")
+          form(id="upload" enctype="multipart/form-data" action="/upload" method="post")
+            br(style="clear:both")
+            h3(style="margin-bottom: 25px; text-align: center;") Upload GPX File
+            div(class="form-group")
+              label(for="Name") Name
+              input(placeholder="Trail name" name="name" id="name" type="name" class="validate" required)
+            div(class="form-group")
+              label(for="Location") Location
+              input(placeholder="Route location" name="location" id="location" type="location" class="validate" required)
+            div(class="form-group")
+              label(for="Level") Level
+              select(class="form-control" placeholder="Level" name="level" id="level" type="text" class="validate" required)
+                option Easy
+                option Intermediate  
+                option Difficult
+            div(class="form-group")
+              label(for="Length") Length
+              input(placeholder="Route length" name="length" id="length" type="length" class="validate" required)
+            div(class="form-group")
+              label(for="File") Upload file
+              input(type='file' name="upload" required)
+            div(class="form-group")
+              label(for="Description") Description
+              textarea(class="form-control" type="textarea" id="description" name="description" placeholder="Route description" maxlength="140" rows="7")               
+            button(type="submit" id="submit" name="action" class="btn btn-primary pull-right") Submit file
+          p(id="thanks")
+    
+    .row.row-margin-bottom
+    .col-md-5.no-padding.lib-item(data-category='view')
+      .lib-panel
+        .row.box-shadow
+          .col-md-6
+            img.lib-img-show(src='../images/other/upload.jpg')
+          .col-md-6
+            .lib-row.lib-header
+              | Share your favourite routes
+              .lib-header-seperator
+            .lib-row.lib-desc
+              | Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
+    .col-md-1
+    .col-md-5.no-padding.lib-item(data-category='ui')
+      .lib-panel
+        .row.box-shadow
+          .col-md-6
+            img.lib-img(src='../images/other/upload1.jpg')
+          .col-md-6
+            .lib-row.lib-header
+              | Example library
+              .lib-header-seperator
+            .lib-row.lib-desc
+              | Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
