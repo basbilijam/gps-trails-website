@@ -4,12 +4,12 @@ block content
   
   div(class="container-fluid")
     div(class="row")
-      div(class="jumbotron")
+      div(class="jumbotron" id="index-errors")
         div(class="container")
           h1 FindTrails
-          p Share and find GPX files for the best trailruns and hikes!
+          h4 Share and find GPX files for the best trailruns and hikes!
           p
-            a(class="btn btn-primary btn-lg" href="#" role="button") Learn more
+            a(class="btn btn-primary btn-lg" href="/about" role="button") Learn more
                   
         form#searchLocation(action="/search" method="post")
           div(id="custom-search-input")
@@ -22,9 +22,15 @@ block content
     
     div(class="container" id="intro")
         h2 Share and find the best runs or hikes
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        p Want to run or walk a nice route in nature, using your GPS watch or another navigation device? You could plot a route yourself on a map, but you’re not sure if this will take you past the nicest paths and scenery. FindTrails, makes it easy: type in your location and have your pick of fine, quality-assured local routes, downloadable in GPX format. As a member, you can also upload and share your routes with other users and rate them. In this way, finding the best routes is made easy and a community of outdoor lovers is created!
     
-    if user      
-      div(class="container")        
-        #map-canvas(style="height: 650px;")
-  
+    div(class="container")
+      div(class="row" class="box-shadow")        
+        #map-canvas(style="height: 650px; width: 60%; float: left;")
+        #map-options
+          h3 Search results are displayed on the map
+          p The markers indicate the starting point of the route. When you click one of the markers you will find more information on the route, and you will be presented with the option to download the GPX file. 
+          button(class="btn btn-primary btn-lg" id="new-search" role="button") New search
+            
+            
+  include ./footer.pug

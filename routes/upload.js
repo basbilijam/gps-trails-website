@@ -23,9 +23,12 @@ const upload = multer({
   storage: storage,
   limits: { fileSize: 1 * 1000 * 10000 },
   fileFilter: (req, file, cb) => {
-    console.log('File is', file)
-   if (file.originalname.indexOf('.gpx') == -1 ) {
-     return cb(new Error('Wrong file type!'), false);
+    console.log('File is', file, file.originalname.indexOf('.gpx') != -1  ||
+        file.originalname.indexOf('.kmz') != -1)
+    // working on accepting two different extensions
+   if (file.originalname.indexOf('.gpx') == -1  &&
+       file.originalname.indexOf('.kmz') == -1 ) {
+         return cb(new Error('Wrong file type!'), false);
    }
    cb(null, true);
    }
@@ -70,13 +73,19 @@ router.post('/upload', upload.single('upload'), (req, res) => {
     userId: req.session.user.id
   }
   gmAPI.geocode(geocodeParams, (err, response) => {
-    console.log('Geocode result is: ', response.results[0].geometry.location)
-    newRoute.lat =  response.results[0].geometry.location.lat
-    newRoute.lng =  response.results[0].geometry.location.lng
-  	db.Route.create(newRoute).then( () => {
-      console.log(newRoute)
-    })
-  // res.render('index', { title: 'Thanks for uploading your GPS route!',  user: req.session.user })
+    if (err) throw err
+    console.log('Geocode results: ', response.results)
+    // console.log('Geocode result is: ', response.results[0].geometry.location)
+    if (!response.results) {
+      return res.render('error', {message: "Invalid location, please try again."})
+    } else {
+      newRoute.lat =  response.results[0].geometry.location.lat
+      newRoute.lng =  response.results[0].geometry.location.lng
+      db.Route.create(newRoute).then( theroute => {
+        console.log(theroute)
+        res.render('upload-successful', { user: req.session.user})
+      })
+    }
   })
 })
 

@@ -148,7 +148,7 @@ $(document).ready(function() {
               "<div class='iw-subtitle'>Location: "+data[i].location+"</div>"+
               "<div class='iw-subtitle'>Level: "+data[i].level+"</div>"+
               "<div class='iw-subtitle'>Length: "+data[i].length+"</div"+
-              "<div><p>"+data[i].description+"</p>"+
+              "<div><p>Description: "+data[i].description+"</p>"+
             "</div>"+
             "<div class='iw-subtitle'><a href='/uploads/"+data[i].upload+"' download>Download file</a></div>")
 

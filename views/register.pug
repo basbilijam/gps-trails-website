@@ -1,12 +1,24 @@
 extends application.pug
 
 block content
-  h1 Register
-  form(id="register" action="/register" method="post")
-    label(for="email") Email
-    input(placeholder="Your e-mail" name="email" id="email" type="email" class="validate")
-    label(for="username") Username
-    input(placeholder="your name" name="username" id="username" type="text" class="validate")
-    label(for="password") Password
-    input(placeholder="Your password" name="password" id="password" type="password" class="validate")
-    button(type="submit" name="action") Submit
+  
+  div(class="container-fluid")
+    div(class="row")
+      div(class="col-md-5")
+        div(class="form-area" class="box-shadow")
+          form(id="register" action="/register" method="post")
+            br(style="clear:both")
+            h3(style="margin-bottom: 25px; text-align: center;") Sign up
+            div(class="form-group")
+              label(for="Email") Email
+              input(placeholder="Your email" name="email" id="email" type="email" class="validate" required)
+            div(class="form-group")
+              label(for="Name") Username
+              input(placeholder="your name" name="username" id="username" type="text" class="validate" required)
+            div(class="form-group")
+              label(for="Level") Password   
+              input(placeholder="Your password" name="password" id="password" type="password" class="validate" required)
+            button(type="submit" name="action" class="btn btn-primary pull-right") Submit
+          p(id="thanks")
+
+  include ./footer.pug

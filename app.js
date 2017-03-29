@@ -17,6 +17,7 @@ const register = require('./routes/register')
 const authentication = require('./routes/authentication')
 const upload = require('./routes/upload')
 const showRoutes = require('./routes/show-routes')
+const about = require('./routes/about')
 
 // setting the app to express
 const app = express()
@@ -47,6 +48,7 @@ app.use('/', authentication)
 app.use('/', upload)
 app.use('/', showRoutes)
 app.use('/', search)
+app.use('/', about)
 
 // catch 404 and forward to error handler
 app.use( (req, res, next) => {

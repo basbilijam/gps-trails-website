@@ -1,6 +1,14 @@
 extends application.pug
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  
+  div(class="container-fluid")
+    div(class="row")
+      div(class="jumbotron" id="index-errors")
+        div(class="container")
+          h1= message
+          
+  //- h2= error.status
+  //- pre #{error.stack}
+  
+  include footer.pug

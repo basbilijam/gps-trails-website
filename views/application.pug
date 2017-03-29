@@ -25,12 +25,14 @@ html
           ul(class="nav navbar-nav navbar-right" id="nav-items")
             if user
               li
+                a(href="/about") About
+              li
                 a(href='/logout') Logout
               li
                 a(href='/upload') Upload file
             else 
               li
-                a(href='/register') Register
+                a(href="/about") About
               li(class="dropdown")
                 a(href="#" class="dropdown-toggle" data-toggle="dropdown") Sign in 
                   span(class="caret")
@@ -47,27 +49,18 @@ html
                           form(class="form" role="form" method="post" action="/log-in" accept-charset="UTF-8" id="log-in")
                             div(class="form-group")
                               label(class="sr-only" for="username") Username
-                              input(type="text" class="form-control" id="usernae" name="username" class="validate" placeholder="Username" required)
+                              input(type="text" class="form-control" id="username" name="username" class="validate" placeholder="Username" required)
                             div(class="form-group")
                               label(class="sr-only" for="password") Password
                               input(type="password" class="form-control" id="password" name="password" class="validate" placeholder="Password" required)
-                              #login-failed
+                
                             div(class="help-block text-right")
-                              a(href="") Forget your password ?
+                              a(href="") Forgot your password ?
                             div(class="form-group")
                               button(type="submit" class="btn btn-primary btn-block") Sign in
-                                  
+                              #login-result
                         div(class="bottom text-center") New here? 
-                          a(href="#") 
-                            b Register
-    
-    script(src="https://code.jquery.com/jquery-3.1.1.min.js")
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
-    script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js')
-    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBdVgxHDOdfpMCYuDeqIg6RCi4zF3w20Lk')
-    script(src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js")
-    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous")
-    script(language="javascript" type="text/javascript" src="./javascripts/map.js")
-    script(language="javascript" type="text/javascript" src="./javascripts/custom.js")
+                          a(href="register") 
+                            b Sign up
     
     block content

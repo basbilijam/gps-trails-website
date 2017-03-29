@@ -35,18 +35,15 @@ router.post('/log-in', (req, res) => {
         console.log(req.session.visited);
         req.session.user = user;
         console.log(req.session.user);
-        res.render('index', {
-          title: 'Findtrails: GPS routes sharing platform',
-          user: req.session.user
-        });
+        res.send({login: 'success', user: req.session.user})
       }
       else {
         console.log('Login failed!')
-        res.send('wrongpassword');
+        res.send({})
       }
     })
   }).catch(err => {
-    res.render('log-in');
+    res.send({});
     console.log('Catch error!')
   });
 });

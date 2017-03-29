@@ -91,11 +91,22 @@ o	Optional: display the whole routes on the map
 # Still working on:
 
 - Download/upload:
-Download function - rename downloaded files
-Upload also files in FMC format? Render the routes on the map?
+Download function - rename downloaded files --> how to do this?
+Upload also files in KMZ format? Render the routes on the map?
 Return them again in GPX?
-
-- Authentication:
-Wrong password AJAX/jQuery message
+Wrong file type error also with right file types
+AJAX function not possible when uploading files? --> render new page with thank you and link to search...
 
 - Center map on user's location when visiting website?
+
+- send email from contact form
+
+- send email for registration or forgotten password
+
+- put it online with digital ocean, nginx, www.findtrails.world
+
+- fix lay out of infowindows
+
+- registration form
+
+- navbar border and opacity?

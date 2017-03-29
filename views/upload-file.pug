@@ -2,11 +2,15 @@ extends application.pug
 
 block content
   
-
   div(class="container-fluid")
     div(class="row")
-      div(class="col-md-5")
-        div(class="form-area")
+      div(class="jumbotron" id="upload-image")
+        div(class="container")
+          h1 Share your best trails!
+            
+    div(class="row")
+      div(class="col-md-6 col-md-offset-3")
+        div(class="form-area" class="box-shadow")
           form(id="upload" enctype="multipart/form-data" action="/upload" method="post")
             br(style="clear:both")
             h3(style="margin-bottom: 25px; text-align: center;") Upload GPX File
@@ -27,34 +31,36 @@ block content
               input(placeholder="Route length" name="length" id="length" type="length" class="validate" required)
             div(class="form-group")
               label(for="File") Upload file
-              input(type='file' name="upload" required)
+              input(type='file' name="upload" id="file" required)
             div(class="form-group")
               label(for="Description") Description
               textarea(class="form-control" type="textarea" id="description" name="description" placeholder="Route description" maxlength="140" rows="7")               
             button(type="submit" id="submit" name="action" class="btn btn-primary pull-right") Submit file
           p(id="thanks")
-    
-    .row.row-margin-bottom
-    .col-md-5.no-padding.lib-item(data-category='view')
-      .lib-panel
-        .row.box-shadow
-          .col-md-6
-            img.lib-img-show(src='../images/other/upload.jpg')
-          .col-md-6
-            .lib-row.lib-header
-              | Share your favourite routes
-              .lib-header-seperator
-            .lib-row.lib-desc
-              | Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
-    .col-md-1
-    .col-md-5.no-padding.lib-item(data-category='ui')
-      .lib-panel
-        .row.box-shadow
-          .col-md-6
-            img.lib-img(src='../images/other/upload1.jpg')
-          .col-md-6
-            .lib-row.lib-header
-              | Example library
-              .lib-header-seperator
-            .lib-row.lib-desc
-              | Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
+    //- 
+    //- .row.row-margin-bottom
+    //- .col-md-5.no-padding.lib-item(data-category='view')
+    //-   .lib-panel
+    //-     .row.box-shadow
+    //-       .col-md-6
+    //-         img.lib-img-show(src='../images/other/upload.jpg')
+    //-       .col-md-6
+    //-         .lib-row.lib-header
+    //-           | Share your favourite routes
+    //-           .lib-header-seperator
+    //-         .lib-row.lib-desc
+    //-           | Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
+    //- .col-md-1
+    //- .col-md-5.no-padding.lib-item(data-category='ui')
+    //-   .lib-panel
+    //-     .row.box-shadow
+    //-       .col-md-6
+    //-         img.lib-img(src='../images/other/upload1.jpg')
+    //-       .col-md-6
+    //-         .lib-row.lib-header
+    //-           | Example library
+    //-           .lib-header-seperator
+    //-         .lib-row.lib-desc
+    //-           | Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
+
+  include ./footer.pug

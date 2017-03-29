@@ -1,0 +1,16 @@
+extends application.pug
+
+block content
+  
+  div(class="container-fluid")
+    div(class="row")
+      div(class="jumbotron" id="index-errors")
+        div(class="container")
+          h1 Thanks for sharing your route!
+          h4 We are sure somebody will enjoy exploring your trail!
+          p
+            a(class="btn btn-primary btn-lg" href="/upload" role="button") Upload another file.
+            h4 or
+            a(class="btn btn-primary btn-lg" href="/" role="button") Search routes.
+  
+  include ./footer.pug
