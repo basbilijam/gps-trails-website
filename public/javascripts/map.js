@@ -135,7 +135,7 @@ $(document).ready(function() {
 
         // scroll to map
         $('html, body').animate({
-                scrollTop: $("#map-canvas").offset().top
+                scrollTop: $("#map").offset().top
             }, 500);
 
         for (var i = 0; i < data.length; i++) {
@@ -145,10 +145,10 @@ $(document).ready(function() {
           "<div id='iw-container'>"+
             "<div class='iw-content'>"+
               "<div class='iw-title'>"+ data[i].name +"</div>" +
-              "<div class='iw-subtitle'>Location: "+data[i].location+"</div>"+
-              "<div class='iw-subtitle'>Level: "+data[i].level+"</div>"+
-              "<div class='iw-subtitle'>Length: "+data[i].length+"</div"+
-              "<div><p>Description: "+data[i].description+"</p>"+
+              "<div class='iw-subtitle'><h4>Location: </h4>"+data[i].location+"</div>"+
+              "<div class='iw-subtitle'><h4>Level: </h4>"+data[i].level+"</div>"+
+              "<div class='iw-subtitle'><h4>Length: </h4>"+data[i].length+"</div"+
+              "<div><h4>Description: </h4></p>"+data[i].description+"</p>"+
             "</div>"+
             "<div class='iw-subtitle'><a href='/uploads/"+data[i].upload+"' download>Download file</a></div>")
 

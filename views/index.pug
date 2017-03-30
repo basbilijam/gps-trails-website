@@ -20,17 +20,67 @@ block content
                   i(class="glyphicon glyphicon-search")
         #notfound 
     
-    div(class="container" id="intro")
-        h2 Share and find the best runs or hikes
-        p Want to run or walk a nice route in nature, using your GPS watch or another navigation device? You could plot a route yourself on a map, but you’re not sure if this will take you past the nicest paths and scenery. FindTrails, makes it easy: type in your location and have your pick of fine, quality-assured local routes, downloadable in GPX format. As a member, you can also upload and share your routes with other users and rate them. In this way, finding the best routes is made easy and a community of outdoor lovers is created!
+    section#services
+    .container
+      .row
+        .col-lg-12.text-center
+          h2.section-heading Share and find the best runs or hikes!
+          p.section-subheading.text-muted Want to run or walk a nice route in nature, using your GPS watch or another navigation device? You could plot a route yourself on a map, but you’re not sure if this will take you past the nicest paths and scenery. FindTrails, makes it easy: type in your location and have your pick of fine, quality-assured local routes, downloadable in GPX format. As a member, you can also upload and share your routes with other users and rate them. In this way, finding the best routes is made easy and a community of outdoor lovers is created!
+      .row.text-center
+        .col-md-3
+          span.fa-stack.fa-3x
+            i.fa.fa-circle.fa-stack-2x.text-primary
+            i.fa.fa-map-marker.fa-stack-1x.fa-inverse
+          h4.service-heading Search the map for GPS routes
+        .col-md-3
+          span.fa-stack.fa-3x
+            i.fa.fa-circle.fa-stack-2x.text-primary
+            i.fa.fa-leaf.fa-stack-1x.fa-inverse
+          h4.service-heading Share your favourite trails
+        .col-md-3
+          span.fa-stack.fa-3x
+            i.fa.fa-circle.fa-stack-2x.text-primary
+            i.fa.fa-picture-o.fa-stack-1x.fa-inverse
+          h4.service-heading Add information for other users
+        .col-md-3
+          span.fa-stack.fa-3x
+            i.fa.fa-circle.fa-stack-2x.text-primary
+            i.fa.fa-globe.fa-stack-1x.fa-inverse
+          h4.service-heading Routes available all over the world
+        a(class="btn btn-primary btn-lg" href="/register" id="sign-up-button" role="button") Sign up now!
+          
+    div(class="row")
+      div(class="jumbotron" id="about")
     
-    div(class="container")
-      div(class="row" class="box-shadow")        
-        #map-canvas(style="height: 650px; width: 60%; float: left;")
-        #map-options
-          h3 Search results are displayed on the map
-          p The markers indicate the starting point of the route. When you click one of the markers you will find more information on the route, and you will be presented with the option to download the GPX file. 
-          button(class="btn btn-primary btn-lg" id="new-search" role="button") New search
-            
-            
+    div(class="container" id="map")
+      div(class="row col-md-8 col-md-offset-2")  
+        h3 Trail Map
+        button(type="submit" id="new-search" class="btn btn-info btn-sm" name="action") New search
+        #map-canvas(style="height: 650px;")
+      
+    section#portfolio.bg-light-gray
+    .container(id="portfolio")
+      .row
+        .col-lg-12.text-center
+          h2.section-heading Trail examples
+      .row
+        .col-md-4.col-sm-6.portfolio-item
+          |  
+          img.img-responsive(src='/images/index/jumbotron3.jpeg', alt='')
+          .portfolio-caption
+            h4 Hellvellyn trail, UK
+            p.text-muted Taking the Lake District by storm
+        .col-md-4.col-sm-6.portfolio-item
+          |  
+          img.img-responsive(src='/images/index/jumbotron2.jpeg', alt='')
+          .portfolio-caption
+            h4 Trail du Mont Blanc
+            p.text-muted Discover the French Alps
+        .col-md-4.col-sm-6.portfolio-item
+          |  
+          img.img-responsive(src='/images/other/upload.jpg', alt='')
+          .portfolio-caption
+            h4 Lillehammer Loop
+            p.text-muted Run around wintery Norway
+                
   include ./footer.pug

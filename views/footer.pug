@@ -21,11 +21,11 @@ footer.footer-distributed
         i.fa.fa-github
   .footer-right
     p Contact Us
-    form(action='#', method='post')
-      input(type='text', name='email', placeholder='Email')
-      textarea(name='message', placeholder='Message')
+    form(action='/contact', method='post')
+      input(type='email', name='email', placeholder='Email')
+      textarea(name='message',type="text" placeholder='Message')
       |  
-      button Send
+      button(id="contact" type="submit") Send 
 
   script(src="https://code.jquery.com/jquery-3.1.1.min.js")
   script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js')
