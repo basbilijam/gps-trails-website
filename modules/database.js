@@ -4,7 +4,9 @@ const pg = require('pg')
 const express = require ('express')
 const bcrypt = require('bcrypt-nodejs')
 
-const db = new sequelize( 'gpsroutes', process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD, {
+// testing database without env user and password: process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD,
+
+const db = new sequelize( 'gpsroutes', 'Bas', 'bas', {
   host: 'localhost',
   dialect: 'postgres'
 } )
