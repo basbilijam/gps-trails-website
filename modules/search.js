@@ -43,7 +43,7 @@ const search = router.post('/search', (req, res) => {
 
       // loop through all routes
       for (var i = 0; i < result.length; i++) {
-        // find matches if lat and lng are within 3 points of search location
+        // find matches if lat and lng are within 3 points of the location given in the search form
         if (
           ( (searchQuery.lat + 3) > result[i].lat && (searchQuery.lat - 3) < result[i].lat ) &&
           ( (searchQuery.lng + 3) > result[i].lng && (searchQuery.lng - 3) < result[i].lng )

@@ -108,8 +108,8 @@ app.post('/contact', (req, res) => {
   });
 });
 
-app.listen(3000, (req, res) => {
-  console.log('Server running on port 3000!')
+app.listen(3001, (req, res) => {
+  console.log('Server running on port 3001!')
 })
 
 module.exports = app
