@@ -6,9 +6,11 @@ const bcrypt = require('bcrypt-nodejs')
 
 // testing database without env user and password: process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD,
 
-const db = new sequelize( 'gpsroutes', 'Bas', 'bas', {
+const db = new sequelize( 'gpsroutes', process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD, {
   host: 'localhost',
   dialect: 'postgres'
+  // console.log('Env user is: ', process.env.POSTGRES_USER);
+  // console.log('Env password is: ', process.env.POSTGRES_PASSWORD);
 } )
 
 //// Models

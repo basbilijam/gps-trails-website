@@ -8,7 +8,7 @@ const bodyParser = require('body-parser')
 const pug = require ('pug')
 const session = require ('express-session')
 const bcrypt = require('bcrypt-nodejs')
-const nodemailer = require('nodemailer');
+// const nodemailer = require('nodemailer');
 
 // requiring custom modules and routes
 const db = require(__dirname + '/modules/database')
@@ -17,8 +17,8 @@ const index = require('./routes/index')
 const register = require('./routes/register')
 const authentication = require('./routes/authentication')
 const upload = require('./routes/upload')
-const showRoutes = require('./routes/show-routes')
 const about = require('./routes/about')
+const contact = require('./routes/contact_form')
 
 // setting the app to express
 const app = express()
@@ -47,9 +47,9 @@ app.use('/', index)
 app.use('/', register)
 app.use('/', authentication)
 app.use('/', upload)
-app.use('/', showRoutes)
 app.use('/', search)
 app.use('/', about)
+app.use('/', contact)
 
 // catch 404 and forward to error handler
 app.use( (req, res, next) => {
@@ -67,45 +67,6 @@ app.use( (err, req, res, next) => {
   // render the error page
   res.status(err.status || 500)
   res.render('error')
-});
-
-
-// route to contact form?
-app.get('/contact', (req, res) => {
-  console.log('Contact established')
-})
-
-// mail function for contact form
-app.post('/contact', (req, res) => {
-  console.log('reg body contact form is: ', req.body);
-  var mailOpts, smtpTrans;
-  //Setup Nodemailer transport (Create an application-specific password to avoid problems).
-  smtpTrans = nodemailer.createTransport('SMTP', {
-      service: 'Gmail',
-      auth: {
-          user: "basbilijam@gmail.com",
-          pass: "application-specific-password"
-      }
-  });
-
-  mailOpts = {
-      from: req.body.email + ' &lt;' + req.body.email + '&gt;', //grab form data from the request body object
-      to: 'basbilijam@gmail.com',
-      subject: 'Website contact form',
-      text: req.body.message
-  };
-  smtpTrans.sendMail(mailOpts, (error, response) => {
-    //Email not sent
-    if (error) {
-      console.log('Error is ', err)
-      res.render('error')
-    }
-    //Yay!! Email sent
-    else {
-      console.log('Contact form succes!')
-      res.render('index')
-    }
-  });
 });
 
 app.listen(3001, (req, res) => {
