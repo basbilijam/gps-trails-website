@@ -28,7 +28,7 @@ router.post('/contact', (req, res) => {
   smtpTrans.sendMail(mailOpts, (error, response) => {
     //Email not sent
     if (error) {
-      console.log('Error is ', err)
+      console.log('Error is ', error)
       res.render('error')
     }
     //Yay!! Email sent
