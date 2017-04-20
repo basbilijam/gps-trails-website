@@ -7,6 +7,11 @@ a {
   color: #00B7FF;
 }
 
+.container-fluid {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 /*Navbar styles*/
 
 .navbar {
@@ -17,6 +22,7 @@ a {
 
 #homebutton {
   color: black;
+  padding-left: 15px;
 }
 
 #nav-items li a {
@@ -27,6 +33,11 @@ a {
     background-color: black;
     border-style: black 2px;
 }
+
+.navbar-fixed-top {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 
 /*jumbotron*/
 #index-errors {
