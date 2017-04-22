@@ -1,5 +1,6 @@
 body {
-  font-family: 14px "Futura", sans-serif;
+  /*font-family: "Futura", sans-serif;*/
+  font-family: 'Lato', sans-serif;
   /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
 }
 
@@ -42,7 +43,7 @@ a {
 /*jumbotron*/
 #index-errors {
   color: white;
-  background: url("../images/index/jumbotron5.jpeg") no-repeat center center;
+  background: url("../images/index/jumbotron.jpeg") no-repeat center center;
   height: 75vh;
   width: 100%;
   background-size: cover;
@@ -50,9 +51,15 @@ a {
   text-align: center;
 }
 
+h1 {
+  word-spacing: 4px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
 #about {
   color: white;
-  background: url("../images/other/about.jpg") no-repeat center center;
+  background: url("../images/other/about.jpeg") no-repeat center center;
   height: 75vh;
   width: 100%;
   background-size: cover;
@@ -254,6 +261,14 @@ a {
 
 #map  {
   text-align: center;
+}
+
+.map-container {
+  width: 100%;
+}
+
+#map-canvas {
+  pointer-events: none;
 }
 
 #portfolio {

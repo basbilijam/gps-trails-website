@@ -56,7 +56,8 @@ block content
       div(class="row col-md-8 col-md-offset-2")  
         h3 Trail Map
         button(type="submit" id="new-search" class="btn btn-info btn-sm" name="action") New search
-        #map-canvas(style="height: 650px;")
+        #map-container
+          #map-canvas(style="height: 650px;")
       
     section#portfolio.bg-light-gray
     .container(id="portfolio")
@@ -66,19 +67,19 @@ block content
       .row
         .col-md-4.col-sm-6.portfolio-item
           |  
-          img.img-responsive(src='/images/index/jumbotron3.jpeg', alt='')
+          img.img-responsive(src='/images/gallery/gallery1.jpeg', alt='')
           .portfolio-caption
             h4 Hellvellyn trail, UK
             p.text-muted Taking the Lake District by storm
         .col-md-4.col-sm-6.portfolio-item
           |  
-          img.img-responsive(src='/images/index/jumbotron2.jpeg', alt='')
+          img.img-responsive(src='/images/gallery/gallery2.jpeg', alt='')
           .portfolio-caption
             h4 Trail du Mont Blanc
             p.text-muted Discover the French Alps
         .col-md-4.col-sm-6.portfolio-item
           |  
-          img.img-responsive(src='/images/other/upload.jpg', alt='')
+          img.img-responsive(src='/images/gallery/gallery3.jpeg', alt='')
           .portfolio-caption
             h4 Lillehammer Loop
             p.text-muted Run around wintery Norway
