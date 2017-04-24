@@ -1,6 +1,7 @@
 body {
   /*font-family: "Futura", sans-serif;*/
-  font-family: 'Lato', sans-serif;
+  font-family: 'ABeeZee', sans-serif;
+  /*font-family: 'Lato', sans-serif;*/
   /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
 }
 
@@ -24,6 +25,7 @@ a {
 #homebutton {
   color: black;
   padding-left: 15px;
+  font-family: 'Permanent Marker', cursive;
 }
 
 #nav-items li a {
@@ -55,6 +57,7 @@ h1 {
   word-spacing: 4px;
   letter-spacing: 1px;
   font-weight: bold;
+  font-family: 'Permanent Marker', cursive;
 }
 
 #about {
@@ -142,11 +145,14 @@ h1 {
 	border: 1px solid rgba(72, 181, 233, 0.6);
 	border-radius: 2px 2px 10px 10px;
 }
+
 #iw-container {
 	margin-bottom: 10px;
 }
+
 #iw-container .iw-title {
-	font-family: 'Open Sans Condensed', sans-serif;
+	/*font-family: 'Open Sans Condensed', sans-serif;*/
+  font-family: 'ABeeZee', sans-serif;
 	font-size: 22px;
 	font-weight: 400;
 	padding: 10px;
@@ -156,6 +162,7 @@ h1 {
 	border-radius: 2px 2px 0 0;
 }
 #iw-container .iw-content {
+  font-family: 'ABeeZee', sans-serif;
 	font-size: 13px;
 	line-height: 18px;
 	font-weight: 400;
@@ -190,6 +197,7 @@ h1 {
     padding: 14px 14px 0;
     overflow:hidden;
     background-color:rgba(255,255,255,.8);
+
 }
 #login-dp .help-block{
     font-size:12px
@@ -324,7 +332,8 @@ h1 {
 
 .footer-distributed h3{
 	color:  #ffffff;
-	font: normal 36px 'Futura', cursive;
+	/*font: normal 36px 'Futura', cursive;*/
+  font: normal 36px 'Permanent Marker', cursive;
 	margin: 0 0 10px;
 }
 
@@ -333,6 +342,10 @@ h1 {
 }
 
 /* Footer links */
+
+footer p {
+  font-family: 'ABeeZee', sans-serif;
+}
 
 .footer-distributed .footer-links{
 	color:  #ffffff;
